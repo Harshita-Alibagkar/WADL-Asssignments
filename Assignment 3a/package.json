@@ -1,0 +1,14 @@
+{
+  "name": "assignment-3a",
+  "version": "1.0.0",
+  "description": "WAD practical 3a",
+  "main": " ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Harshita",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
