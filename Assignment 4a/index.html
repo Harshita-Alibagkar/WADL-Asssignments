@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mobile JQuery</title>
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <style>
+    body {
+        background: url('loginBG.jpg') no-repeat center center fixed;
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container{
+        text-align: center;
+    }
+    .image-container {
+      margin: 0%;
+      text-align: center;
+    }
+    .image-container img {
+      margin: 0%;
+      max-width: 45vw; /* 1/4 of window width */
+      height: auto;
+      border-radius: 5px; /* Rounded corners */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Drop shadow */
+    }
+    .footer-text {
+      margin: 0%;
+      text-align: center;
+      color: #555;
+      font-style: italic;
+    }
+    .button-like {
+      margin: 0%;
+      align-content: center;
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #157e60;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .text {
+        text-align: center;
+    }
+  </style>
+
+</head>
+<body>
+<div data-role="page">
+    <div class="text">
+        <h1>Swipe function</h1>
+    </div>
+
+  <div data-role="content">
+    <div class="image-container">
+      <img src="i1.png" id="galleryImage">
+    </div>
+  </div>
+
+  <div class="text">
+    <h4 class="footer-text">Swipe left or right to change image</h4>
+  </div>
+
+  <div class="text">
+    <h1>Touch function</h1>
+  </div>
+
+  <div class="container">
+    <p class="button-like">Click me and I'll vanish</p>
+  </div>
+    
+</div>
+
+<script>
+  $(document).on("pagecreate", function () {
+    $("#galleryImage").on("swipeleft", function () {
+      changeImage('next');
+    });
+
+    $("#galleryImage").on("swiperight", function () {
+      changeImage('prev');
+    });
+
+    function changeImage(direction) {
+      var currentImage = $("#galleryImage").attr("src");
+      var imageArray = ["i1.png", "i2.png", "i3.png", "i4.png", "i5.png"]; 
+      var currentIndex = imageArray.indexOf(currentImage);
+      var newIndex;
+
+      if (direction === 'next') {
+        newIndex = (currentIndex + 1) % imageArray.length;
+      } else {
+        newIndex = (currentIndex - 1 + imageArray.length) % imageArray.length;
+      }
+
+      $("#galleryImage").attr("src", imageArray[newIndex]);
+    }
+
+    $(".button-like").on("tap", function(){
+        $(this).hide();
+      });
+  });
+</script>
+
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Swipe Image Gallery</title>
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <style>
+    .image-container {
+      text-align: center;
+    }
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+
+<div data-role="page">
+  <div data-role="header">
+    <h1>Swipe Image Gallery</h1>
+  </div>
+
+  <div data-role="content">
+    <div class="image-container">
+      <img src="i1.png" id="galleryImage">
+    </div>
+  </div>
+
+  <div data-role="footer">
+    <h4>Swipe left or right to change image</h4>
+  </div>
+</div>
+
+<script>
+  $(document).on("pagecreate", function () {
+    $("#galleryImage").on("swipeleft", function () {
+      changeImage('next');
+    });
+
+    $("#galleryImage").on("swiperight", function () {
+      changeImage('prev');
+    });
+
+    function changeImage(direction) {
+      var currentImage = $("#galleryImage").attr("src");
+      var imageArray = ["i1.png", "i2.png", "i3.png", "i4.png", "photo.jpg"]; // Add more image URLs as needed
+      var currentIndex = imageArray.indexOf(currentImage);
+      var newIndex;
+
+      if (direction === 'next') {
+        newIndex = (currentIndex + 1) % imageArray.length;
+      } else {
+        newIndex = (currentIndex - 1 + imageArray.length) % imageArray.length;
+      }
+
+      $("#galleryImage").attr("src", imageArray[newIndex]);
+    }
+  });
+</script>
+
+</body>
+</html> -->
